@@ -16,10 +16,13 @@ form.addEventListener('submit', async event => {
   event.preventDefault();
 
   const query = input.value.trim();
+
   if (!query) {
     iziToast.warning({
       message: 'Please enter a search query!',
       position: 'topRight',
+      timeout: 4000,
+      color: 'yellow',
     });
     return;
   }
@@ -35,6 +38,8 @@ form.addEventListener('submit', async event => {
         message:
           'Sorry, there are no images matching your search query. Please try again!',
         position: 'topRight',
+        timeout: 4000,
+        color: 'red',
       });
       return;
     }
@@ -44,6 +49,7 @@ form.addEventListener('submit', async event => {
     iziToast.error({
       message: 'Something went wrong! Please try again later.',
       position: 'topRight',
+      timeout: 4000,
     });
     console.error(error);
   } finally {
